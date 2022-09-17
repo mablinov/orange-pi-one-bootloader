@@ -6,3 +6,9 @@
 *~
 .#*
 *#
+
+gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz
+gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf/
+genimage/
+images/
+u-boot/

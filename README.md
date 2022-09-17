@@ -2,6 +2,16 @@ The Orange Pi One cannot boot from anything other than the SD card. Therefore, w
 
 This project simply automates the SD card image creation process, for the purpose of documentation and repeatability.
 
+## Preqrequisites
+
+* For building `genimage`:
+
+    ```shell
+    $ sudo apt install -y libconfuse-dev
+    ```
+
+* For U-boot, please consult the official docs [here](https://u-boot.readthedocs.io/en/latest/build/gcc.html).
+
 ## Installing Debian from external USB installation media
 
 1) Build the `sdcard-bootloader-only.img` disk image:
@@ -19,3 +29,21 @@ This project simply automates the SD card image creation process, for the purpos
 4) Plug in the SD card into the Orange Pi One, and the USB thumb drive through a USB hub to the Orange Pi's USB port (since you will also need a keyboard for the installation process, and the Orange Pi One only has 1 USB port.)
 
 5) U-boot should automatically detect the USB thumb drive and boot from it.
+
+## Potential problems
+
+```shell
+git clone https://source.denx.de/u-boot/u-boot.git --depth 1 --branch v2022.07
+Cloning into 'u-boot'...
+fatal: unable to access 'https://source.denx.de/u-boot/u-boot.git/': server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
+Makefile:25: recipe for target 'u-boot/' failed
+make: *** [u-boot/] Error 128
+```
+
+I had this issue when trying to build the SD card image from an Ubuntu 16.04 installation. A simple workaround is the following:
+
+```shell
+$ export GIT_SSL_NO_VERIFY=true
+```
+
+*Source: [stackoverflow](https://stackoverflow.com/a/21407163)*

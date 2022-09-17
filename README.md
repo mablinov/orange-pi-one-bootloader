@@ -47,3 +47,13 @@ $ export GIT_SSL_NO_VERIFY=true
 ```
 
 *Source: [stackoverflow](https://stackoverflow.com/a/21407163)*
+
+## Note regarding terminology
+
+In Debian-land, two terms appear frequently "near" one another: "hd-media", and "netboot". As [this](https://askubuntu.com/a/422280) answer explains, "hd-media" refers to a booting mode when the installation media is located locally to the PC, whereas netboot is referred to the case when the installation media is located remotely, e.g. over tftp.
+
+Note that in both cases though, the *installer* is available and presumed to have been booted into already. In this project, if you want to install the installer to the SD card and provide the `.iso` file on a separate thumb drive, you can invoke
+
+```shell
+$ make images/sdcard-hdmedia-only.img
+```
